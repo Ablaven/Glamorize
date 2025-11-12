@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Glamorize</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #F9A27C;
+            --secondary-color: #FFE5D9;
+            --accent-color: #FFD7BA;
+            --text-color: #555;
+            --bg-color: #FFF9F7;
+            --card-bg: #FFFEFD;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .back-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section */
+        .story-hero {
+            padding: 5rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .story-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .story-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .story-hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 4rem 5%;
+            background: white;
+        }
+
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .mobile-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            margin: 0 auto;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .mobile-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mobile-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #1a1a1a;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .play-button i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-left: 5px;
+        }
+
+        .video-content {
+            padding: 2rem;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .video-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .video-features {
+            list-style: none;
+        }
+
+        .video-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .video-features i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Story Content */
+        .story-content {
+            padding: 4rem 5%;
+            background: var(--bg-color);
+        }
+
+        .story-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            bottom: -30px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), transparent);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 0 2rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-text {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 4rem 5%;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #777;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 5%;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .story-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .video-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .mobile-mockup {
+                width: 250px;
+                height: 500px;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-item::before {
+                left: 30px;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                margin: 2rem 0 0 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-sparkles"></i>
+            Glamorize
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li><a href="index.html#brands">Local Bands</a></li>
+                <li><a href="index.html#community">Style Community</a></li>
+                <li><a href="index.html#glammy">Glammy</a></li>
+            </ul>
+        </nav>
+        <a href="Glamorize.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="story-hero">
+        <h1>Our Story</h1>
+        <p>From a university project to a fashion revolution</p>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="video-container">
+            <div class="mobile-mockup">
+                <div class="mobile-screen">
+                    <div class="mobile-notch"></div>
+                    <div class="video-placeholder">
+                        <div class="play-button" onclick="playVideo()">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <!-- Replace this with your actual video -->
+                        <video id="storyVideo" style="display: none; width: 100%; height: 100%; object-fit: cover;">
+                            <source src="your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+            <div class="video-content">
+                <h2 class="video-title">Hear From Us</h2>
+                <p class="video-desc">
+                    We wanted to share our journey with you personally. Watch as we talk about how a simple university project transformed into our passion and life's work.
+                </p>
+                <ul class="video-features">
+                    <li><i class="fas fa-heart"></i> Our humble beginnings</li>
+                    <li><i class="fas fa-lightbulb"></i> The moment everything changed</li>
+                    <li><i class="fas fa-users"></i> Building our community</li>
+                    <li><i class="fas fa-rocket"></i> Our vision for the future</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Timeline -->
+    <section class="story-content">
+        <div class="story-timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Fall 2024</div>
+                    <h3 class="timeline-title">The Beginning</h3>
+                    <p class="timeline-text">
+                        It all started as a simple university project - just another assignment to complete before the semester ended. Five friends in a dorm room, brainstorming ideas for a fashion tech startup.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Winter 2024</div>
+                    <h3 class="timeline-title">The Spark</h3>
+                    <p class="timeline-text">
+                        As we worked together, something magical happened. We discovered a shared passion that went far beyond grades or deadlines. We saw how fashion in Egypt was losing its soul, and we knew we had to do something about it.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Spring 2025</div>
+                    <h3 class="timeline-title">Taking the Risk</h3>
+                    <p class="timeline-text">
+                        That night, we made a decision. We took the risk. We decided to build Glamorize from the ground up, fueled by nothing but our passion and a shared vision. We poured our hearts into creating something that mattered.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Today</div>
+                    <h3 class="timeline-title">The Dream Alive</h3>
+                    <p class="timeline-text">
+                        Today, Glamorize is more than just a project. It's our dream come to life. It's a community of young Egyptians who believe that fashion should be personal, meaningful, and connected to our roots. And we're just getting started.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <h2 class="section-title">Meet The Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="member-name">Mazin</h3>
+                <p class="member-role">Co-founder & CTO</p>
+                <p class="member-bio">Visionary leader with a passion for blending technology with fashion</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="member-name">Mohamed</h3>
+                <p class="member-role">Co-founder & CEO</p>
+                <p class="member-bio">Tech genius bringing AI and AR to fashion</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="member-name">Aly</h3>
+                <p class="member-role">Co-founder & Creative Director</p>
+                <p class="member-bio">Creative mind shaping our unique aesthetic</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="member-name">Nada</h3>
+                <p class="member-role">Co-founder & Community Manager</p>
+                <p class="member-bio">Building our vibrant community of fashion lovers</p>
+            </div>
+            <div class="team-member">
+                <div class="member-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3 class="member-name">Molly</h3>
+                <p class="member-role">Co-founder & Brand Strategist</p>
+                <p class="member-bio">Crafting our brand story and partnerships</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 class="cta-title">Join Our Journey</h2>
+        <p class="cta-text">
+            We're just getting started. Be part of our community and help us revolutionize fashion in Egypt.
+        </p>
+        <a href="index.html" class="cta-button">Get Started with Glamorize</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> hello@glamorize.com</li>
+                    <li><i class="fas fa-phone"></i> +20 123 456 7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</li>
+                </ul>
+                <div class="social-icons">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#categories">Categories</a></li>
+                    <li><a href="index.html#brands">Local Bands</a></li>
+                    <li><a href="index.html#community">Style Community</a></li>
+                    <li><a href="index.html#glammy">Glammy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="about.html">About Glamorize</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Glamorize. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--primary-color);"></i> in Egypt</p>
+        </div>
+    </footer>
+
+    <script>
+        // Video play function
+        function playVideo() {
+            const video = document.getElementById('storyVideo');
+            const playButton = document.querySelector('.play-button');
+            
+            if (video.style.display === 'none') {
+                // Replace 'your-video.mp4' with your actual video file
+                video.src = 'your-video.mp4';
+                video.style.display = 'block';
+                video.play();
+                playButton.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
